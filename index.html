@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nymintra — Coming Soon</title>
 
 <style>
@@ -11,24 +11,22 @@
         padding: 0;
         background: #ffffff;
         font-family: 'Poppins', 'Inter', sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        text-align: center;
         color: #1c1c1c;
+        text-align: center;
     }
 
+    /* Landing Section */
     .container {
-        max-width: 600px;
-        padding: 20px;
+        max-width: 700px;
+        margin: auto;
+        padding: 40px 20px;
     }
 
     .logo {
         font-size: 64px;
-        margin-bottom: 20px;
         font-weight: 700;
-        color: #d72631;  /* Logo Red */
+        color: #d72631;
+        margin-bottom: 20px;
     }
 
     .tagline {
@@ -39,8 +37,8 @@
     }
 
     .coming-soon {
-        margin-top: 40px;
-        font-size: 20px;
+        margin-top: 35px;
+        font-size: 22px;
         font-weight: 600;
         color: #d72631;
     }
@@ -52,30 +50,76 @@
         line-height: 1.6;
     }
 
-    .contact-box {
-        margin-top: 35px;
-        font-size: 16px;
-        color: #333;
-        padding: 18px;
+    /* Feedback Form Section */
+    .form-container {
+        max-width: 450px;
+        margin: 50px auto;
+        padding: 25px;
         border: 2px solid #d72631;
-        border-radius: 10px;
+        border-radius: 12px;
+        background: #fff;
+        text-align: left;
     }
 
-    .contact-box b {
+    .form-container h2 {
+        text-align: center;
         color: #d72631;
+        margin-bottom: 15px;
     }
 
-    footer {
-        margin-top: 40px;
+    label {
+        font-weight: 600;
         font-size: 14px;
-        color: #777;
+        display: block;
+        margin-bottom: 6px;
+        color: #1c1c1c;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1.5px solid #d72631;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #d72631;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+        margin-top: 60px;
+        background: #000000;
+        color: #cccccc;
+        padding: 20px 10px;
+        font-size: 13px;
+    }
+
+    footer b {
+        color: #ffffff;
     }
 </style>
 </head>
 
 <body>
-    <div class="container">
 
+    <!-- Landing Section -->
+    <div class="container">
         <div class="logo">Nymintra</div>
         <div class="tagline">Your Celebration,<br>Simplified.</div>
 
@@ -86,16 +130,35 @@
             We are building an AI-powered platform for invitation cards,<br>
             event materials, and vendor booking — all in one place.
         </div>
-
-        <div class="contact-box">
-            <div><b>Email:</b> nkchaudhary431@gmail.com</div>
-            <div><b>Phone:</b> +91 9263087676</div>
-        </div>
-
-        <footer>
-            © 2025 Nymintra — All Rights Reserved.
-        </footer>
-
     </div>
+
+    <!-- Feedback Form Section -->
+    <div class="form-container">
+        <h2>Suggestion Form</h2>
+
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="7facc30d-b7fa-43a7-9eaa-de15d440d3a9">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="abc@example.com" required>
+
+            <label>Contact</label>
+            <input type="text" name="contact" placeholder="+91 976666666" required>
+
+            <label>Suggestion</label>
+            <textarea name="feedback" rows="4" placeholder="Write your suggestion..." required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div><b>Contact:</b> nkchaudhary431@gmail.com | 9263087676</div>
+        <div>© 2025 Nymintra — All Rights Reserved.</div>
+    </footer>
+
 </body>
 </html>
