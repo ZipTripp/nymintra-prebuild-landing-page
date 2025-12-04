@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nymintra — Your Celebration, Simplified</title>
+  <meta name="description" content="Nymintra — AI-powered previews, customizable invitation cards, and vendor marketplace. Coming soon." />
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#f59e0b; /* warm gold */
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+      --max-w:1100px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071123 0%, var(--bg) 60%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max-w);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:20px;
+      padding:28px;
+      box-shadow: 0 10px 40px rgba(2,6,23,0.7);
+      border: 1px solid rgba(255,255,255,0.03);
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:24px;
+    }
+
+    /* responsive */
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr; padding:20px}
+    }
+
+    .hero{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      justify-content:center;
+    }
+
+    .logo{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .logo .mark{
+      width:56px;height:56px;border-radius:10px;
+      background: linear-gradient(135deg,#ffcc66,#ff9f1c);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#111;
+      box-shadow: 0 6px 18px rgba(245,158,11,0.18);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .brand{font-size:20px;font-weight:700;letter-spacing:0.2px}
+
+    h1{
+      margin:0;
+      font-size:34px;
+      line-height:1.02;
+      letter-spacing:-0.5px;
+    }
+    .tag{
+      color:var(--muted);
+      margin-top:4px;
+      font-size:14px;
+    }
+
+    .blurb{
+      background:var(--glass);
+      padding:14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.5;
+    }
+
+    .cta-row{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .btn{
+      background:linear-gradient(90deg,var(--accent),#ffb84d);
+      color:#081026;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+      box-shadow: 0 6px 22px rgba(255,159,67,0.12);
+    }
+    .ghost{
+      background:transparent;
+      color:var(--muted);
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.04);
+      cursor:pointer;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+    @media (max-width:600px){.features{grid-template-columns:1fr}}
+
+    .feature{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.02);
+      font-size:14px;
+      color:var(--muted);
+    }
+    .feature b{color:#fff}
+
+    /* right column */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:18px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,0.03);
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:stretch;
+    }
+
+    .coming{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      justify-content:space-between;
+    }
+    .pill{
+      background:rgba(0,0,0,0.25);
+      padding:8px 12px;border-radius:999px;
+      font-weight:700;font-size:13px;
+      color:var(--accent);
+      border:1px solid rgba(245,158,11,0.12);
+    }
+
+    .count{
+      font-weight:800;font-size:28px;
+      letter-spacing:0.6px;
+    }
+    .muted{color:var(--muted);font-size:13px}
+
+    form.subscribe{
+      display:grid;gap:8px;margin-top:8px;
+    }
+    input[type="email"]{
+      padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      background:transparent;color:inherit;font-size:14px;
+    }
+    .row{display:flex;gap:8px}
+    .note{font-size:12px;color:var(--muted)}
+
+    footer{
+      margin-top:12px;color:var(--muted);font-size:13px;
+      display:flex;justify-content:space-between;align-items:center;gap:10px;
+    }
+
+    /* small card preview */
+    .preview{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);
+      display:flex;flex-direction:column;gap:8px;align-items:flex-start;
+    }
+    .preview .title{font-weight:700;font-size:14px}
+    .preview .meta{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="logo" aria-hidden="false">
+        <div class="mark">N</div>
+        <div>
+          <div class="brand">Nymintra</div>
+          <div class="tag">Your Celebration, Simplified.</div>
+        </div>
+      </div>
+
+      <h1 id="hero-heading">AI previews • Custom invitations • Local vendors</h1>
+
+      <div class="blurb">
+        Nymintra is building an India-first platform for customizable printed invitations, gifts and a local vendor marketplace — focused on Tier-2 & Tier-3 towns with AI-powered real-time previews and doorstep delivery. (Startup is in development.) 
+      </div>
+
+      <div class="cta-row">
+        <button class="btn" id="notifyBtn">Notify me — join waitlist</button>
+        <button class="ghost" id="learnBtn">Read short brief</button>
+      </div>
+
+      <div class="features" aria-hidden="false">
+        <div class="feature"><b>AI-powered preview</b><div class="muted">See an exact mock of your printed card before you order.</div></div>
+        <div class="feature"><b>Wide design library</b><div class="muted">Traditional & modern templates tailored for Indian events.</div></div>
+        <div class="feature"><b>Doorstep delivery</b><div class="muted">Transparent timelines & tracking for printed orders.</div></div>
+        <div class="feature"><b>Vendor marketplace</b><div class="muted">Book tent, decorators, mehndi, caterers — date-based availability.</div></div>
+      </div>
+
+      <div style="margin-top:14px;color:var(--muted);font-size:13px">
+        <em>Notes:</em> Nymintra is currently in idea → MVP stage and preparing a launch. Details of features and timelines may change as we build. <!-- short Disclaimer -->
+      </div>
+    </section>
+
+    <aside class="card" aria-labelledby="right-title">
+      <div class="coming">
+        <div>
+          <div class="pill">IN DEVELOPMENT</div>
+          <div style="margin-top:8px;font-size:18px;font-weight:700">Coming soon</div>
+          <div class="muted" style="margin-top:4px">Sign up to get notified at launch</div>
+        </div>
+        <div style="text-align:right">
+          <div class="count" id="days">—</div>
+          <div class="muted">days to launch</div>
+        </div>
+      </div>
+
+      <div class="preview" aria-hidden="true">
+        <div class="title">Sample invitation preview</div>
+        <div class="meta">TEMPLATE: Classic Marigold • SIZE: 6x8 inch • PAPER: 300 GSM</div>
+        <svg width="100%" height="80" viewBox="0 0 400 80" preserveAspectRatio="none" style="border-radius:8px;background:linear-gradient(90deg, rgba(245,158,11,0.06), rgba(255,255,255,0.02));">
+          <rect x="0" y="0" width="400" height="80" fill="transparent"></rect>
+        </svg>
+      </div>
+
+      <form class="subscribe" id="signup" onsubmit="return handleSignup(event)">
+        <label class="note" for="email">Email address</label>
+        <input id="email" type="email" placeholder="you@domain.com" required />
+        <div class="row">
+          <button class="btn" type="submit">Join waitlist</button>
+          <button class="ghost" type="button" id="copyBtn">Copy brief text</button>
+        </div>
+        <div class="note">We will never share your email. No spam. By joining you agree to receive updates about Nymintra's launch.</div>
+      </form>
+
+      <footer>
+        <div class="muted">Founder: Nirwair Kumar Chaudhary</div>
+        <div class="muted">© Nymintra — In development</div>
+      </footer>
+    </aside>
+  </div>
+
+  <script>
+    // Simple local waitlist: stores email to localStorage and shows a tiny toast
+    function toast(msg){
+      const el = document.createElement('div');
+      el.textContent = msg;
+      Object.assign(el.style,{
+        position:'fixed',right:'20px',bottom:'20px',padding:'12px 16px',background:'#081026',color:'#fff',borderRadius:'10px',boxShadow:'0 8px 24px rgba(2,6,23,0.7)',zIndex:9999
+      });
+      document.body.appendChild(el);
+      setTimeout(()=>{el.style.opacity=0; setTimeout(()=>el.remove(),450)},2200);
+    }
+
+    function handleSignup(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!email) return;
+      // store in localStorage (placeholder — replace with backend API)
+      const store = JSON.parse(localStorage.getItem('ny_waitlist')||'[]');
+      if(!store.includes(email)){
+        store.push(email);
+        localStorage.setItem('ny_waitlist', JSON.stringify(store));
+        toast('Thanks — you are on the waitlist!');
+      } else {
+        toast('You are already on the waitlist.');
+      }
+      return false;
+    }
+
+    // Copy a short brief (uses content from your uploaded brief)
+    document.getElementById('copyBtn').addEventListener('click', function(){
+      const text = `Nymintra — Your Celebration, Simplified.\nAI-powered real-time preview for invitations, wide design library, doorstep delivery, and a vendor marketplace. (Startup in development.)`;
+      navigator.clipboard?.writeText(text).then(()=>toast('Brief copied to clipboard'));
+    });
+
+    // simple countdown — set a target date (edit as needed)
+    (function countdown(){
+      // Example launch date (edit): 2026-02-01
+      const target = new Date('2026-02-01T00:00:00+05:30');
+      const daysEl = document.getElementById('days');
+      function tick(){
+        const now = new Date();
+        const diff = Math.max(0, target - now);
+        const days = Math.ceil(diff / (1000*60*60*24));
+        daysEl.textContent = days > 0 ? days : '0';
+      }
+      tick();
+      setInterval(tick, 60*60*1000);
+    })();
+
+    // "learn" button opens a short modal — we'll use simple alert to avoid heavy code
+    document.getElementById('learnBtn').addEventListener('click', function(){
+      alert('Nymintra — AI previews + printing + vendor marketplace. Focus: Tier-2 / Tier-3 towns. (Source: founder brief)');
+    });
+
+    // quick notify button
+    document.getElementById('notifyBtn').addEventListener('click', function(){
+      document.getElementById('email').focus();
+      toast('Enter email in the form to join waitlist.');
+    });
+  </script>
+</body>
+</html>
